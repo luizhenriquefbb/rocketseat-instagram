@@ -10,7 +10,7 @@ yarn start
 # libs
 
 - axios
- - Fazer gets e post mais facilmente
+    - Fazer gets e post mais facilmente
 
 - socket.io-client
- - receber broadcast
+    - receber broadcast
