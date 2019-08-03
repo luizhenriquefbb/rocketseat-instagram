@@ -29,7 +29,17 @@ Foi realizado durante a a omnistack7 da [rocketseat](https://rocketseat.com.br/)
 
 - Instalar Node
 
-> **TODO: colocar link de instalção do node**
+```sh
+sudo apt-get install -y curl
+```
+
+```sh
+sudo curl -sL https://deb.nodesource.com/setup_8.x |sudo -E bash
+```
+
+```sh
+sudo apt-get install -y nodejs
+```
 
 - instalar yarn
 
@@ -59,9 +69,7 @@ node src/index.js
 
 ## FrontEnd
 
-- react
-
-> **TODO: colocar link de instalação do react**
+- [react](https://reactjs.org/docs/getting-started.html)
 
 - Basta ir para o diretório do frontend
 ```sh
@@ -77,3 +85,10 @@ Rodar no browser
 ```sh
 yarn start
 ```
+
+## Configurar ip
+
+Pelo seu terminal digite `ifconfig` e veja qual o seu local_ip
+![ifconfig](imagens_readme/ifconfig.png)
+
+Nos arquivos `frontend/src/consts.js` altere a variável `local_ip`
