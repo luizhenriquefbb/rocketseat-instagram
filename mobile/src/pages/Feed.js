@@ -8,6 +8,8 @@ import comment from "../../assets/assets/comment.png";
 import send from "../../assets/assets/send.png";
 
 import api from "../services/api";
+import io from 'socket.io-client';
+
 import { local_ip } from "../consts";
 
 const styles = StyleSheet.create({
@@ -118,13 +120,38 @@ export default class Feed extends Component {
 
 
     async componentDidMount(){
-        // this.registerToSocket();
+        this.registerToSocket();
         const response = await api.get('posts');
 
         console.log('response', response);
 
         this.setState({feed : response.data.posts});
 
+    }
+
+    registerToSocket = () => {
+
+        const socket = io(`${local_ip}:3333`);
+
+        // post ou like ?
+        socket.on('post', newPost => {
+            // adicionar novo post no começo
+            this.setState( { feed : [newPost, ...this.state.feed] } );
+        })
+        socket.on('like', likedPost => {
+            // atualizar o numero de likes
+            this.setState(
+                {
+                    feed: this.state.feed.map(post => {
+                        if (post._id === likedPost._id){
+                            post.likes = likedPost.likes;
+                        }
+
+                        return post;
+                    })
+                }
+            )
+        })
     }
 
     handleLike(evt, post_id){
