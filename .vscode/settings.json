@@ -1,3 +1,4 @@
 {
-    "cSpell.language": "pt-br"
+    "cSpell.language": "pt-br",
+    "files.autoSave": "onWindowChange"
 }
