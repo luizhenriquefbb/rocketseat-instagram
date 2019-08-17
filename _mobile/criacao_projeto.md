@@ -25,5 +25,5 @@ react-native run-ios
 
 Depois de "instalado", basta rodar
 ```sh
-react-native start
+react-native start [--reset-cache]
 ```
