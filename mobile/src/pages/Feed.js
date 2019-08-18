@@ -90,6 +90,10 @@ export default class Feed extends Component {
 
     }
 
+    /**
+     * @param {String} title
+     * @param {String} msg
+     */
     testAlert (title='Alert Title', msg='My Alert Msg') {
         Alert.alert(
             title,
@@ -106,10 +110,14 @@ export default class Feed extends Component {
         );
     }
 
+    /** Navegar para a proxima pagina */
     static navigate = (navigationObj, route) => {
         navigationObj.navigate(route);
     }
 
+    /**
+     * Configura o botal no lado superior direito para ter acesso a pagina de "nova postagem"
+     */
     static navigationOptions = ({navigation}) => ({
         headerRight : (
             <TouchableOpacity onPress={() => {this.navigate(navigation, "New")}}>
@@ -120,15 +128,14 @@ export default class Feed extends Component {
 
 
     async componentDidMount(){
-        this.registerToSocket();
+        this.registerToSocket(); // registrar para receber atualizacoes em tempo real sem precisar dar REFRESH
         const response = await api.get('posts');
-
-        console.log('response', response);
 
         this.setState({feed : response.data.posts});
 
     }
 
+    /** registrar para receber atualizacoes em tempo real sem precisar dar REFRESH */
     registerToSocket = () => {
 
         const socket = io(`${local_ip}:3333`);
@@ -182,7 +189,7 @@ export default class Feed extends Component {
                     renderItem={({item}) => (
                         <View style={styles.feedItem}>
 
-
+                            {/* header */}
                             <View style={styles.feedItemHeader}>
                                 <View style={styles.userInfo}>
                                     <Text style={styles.name}>{item.author}</Text>
@@ -191,8 +198,10 @@ export default class Feed extends Component {
                                 <Image source={more} alt="Mais"/>
                             </View>
 
+                            {/* imagem principal */}
                             <Image source={{uri:`${local_ip}:3333/files/${item.image}`}} style={styles.feedImage} alt="Mais"/>
 
+                            {/* footer */}
                             <View style={styles.feedItemFooter}>
                                 <View style={styles.actions}>
                                     <TouchableOpacity type="button" style={styles.action} onPress={(evt) => this.handleLike(evt, item._id)}>

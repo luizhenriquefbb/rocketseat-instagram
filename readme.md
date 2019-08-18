@@ -10,6 +10,10 @@ feed:
 novo feed:
 ![feed](imagens_readme/Screenshot_20190802_161035.png)
 
+emulador do mobile:
+
+![emulador](imagens_readme/Screen_Shot_2019-08-18_at_12.05.40.png)
+
 
 Foi realizado durante a a omnistack7 da [rocketseat](https://rocketseat.com.br/)
 
@@ -24,6 +28,13 @@ Foi realizado durante a a omnistack7 da [rocketseat](https://rocketseat.com.br/)
     - se um browser der like em uma foto ou fizer uma nova postagem, as mudanças vão aparecer para todos os usuários logados
 
 # Como rodar
+
+## Configurar ip
+
+Pelo seu terminal digite `ifconfig` e veja qual o seu local_ip
+![ifconfig](imagens_readme/ifconfig.png)
+
+Nos arquivos `frontend/src/consts.js` altere a variável `local_ip`
 
 ## Front e Back
 
@@ -86,9 +97,28 @@ Rodar no browser
 yarn start
 ```
 
-## Configurar ip
+## Mobile
 
-Pelo seu terminal digite `ifconfig` e veja qual o seu local_ip
-![ifconfig](imagens_readme/ifconfig.png)
+Instalar as dependencias
 
-Nos arquivos `frontend/src/consts.js` altere a variável `local_ip`
+```sh
+cd mobile
+yarn install
+```
+
+Primeira instalacao (precisa do celular conectado via USB)
+
+```sh
+react-native run-android
+
+ou
+
+react-native run-ios
+```
+
+
+# TODO:
+
+- Usuario pode fazer comentario
+- deletar um post
+- Codigo e comentarios no codigo em ingles

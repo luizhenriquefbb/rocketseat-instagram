@@ -100,6 +100,9 @@ export default class New extends Component {
         this.props.navigation.navigate('Feed');
     }
 
+    /**
+     * Upoad de nova imagem
+     */
     handleSelectImage = () => {
         ImagePicker.showImagePicker({
             title:'Selecione a Imagem',
