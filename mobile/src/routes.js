@@ -16,6 +16,7 @@ export default createAppContainer(
         Feed,
         New
     }, {
+        // initialRouteName:'New',
         defaultNavigationOptions : {
             headerTitle : <Image style={styles.headerTitle} source={logo} />,
             headerTintColor : '#000', // cor do botao voltar
